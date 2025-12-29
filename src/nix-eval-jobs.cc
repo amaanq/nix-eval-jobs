@@ -518,7 +518,7 @@ auto main(int argc, char **argv) -> int {
 
         /* FIXME: The build hook in conjunction with import-from-derivation is
          * causing "unexpected EOF" during eval */
-        nix::settings.builders = "";
+        nix::settings.getWorkerSettings().builders = "";
 
         /* Set no-instantiate mode if requested (makes evaluation faster) */
         if (myArgs.noInstantiate) {

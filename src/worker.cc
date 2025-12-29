@@ -212,8 +212,8 @@ auto registerGCRoot(nix::EvalState &state, const Drv &drv, const MyArgs &args)
         return;
     }
 
-    const nix::Path root =
-        args.gcRootsDir + "/" + std::string(nix::baseNameOf(drv.drvPath));
+    const std::filesystem::path root =
+        args.gcRootsDir / std::string(nix::baseNameOf(drv.drvPath));
 
     if (!nix::pathExists(root)) {
         auto localStore = state.store.dynamic_pointer_cast<nix::LocalFSStore>();
